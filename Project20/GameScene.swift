@@ -15,6 +15,12 @@ class GameScene: SKScene {
   var fireWorks = [SKNode]()
   var scoreLabel: SKLabelNode!
   
+  // Number of maximum launches.
+  let maxNumOfLaunches = 5
+  
+  // Number of current launches
+  var currentLaunches = 0
+  
   var score: Int = 0 {
     didSet {
       // Set score label
@@ -44,6 +50,7 @@ class GameScene: SKScene {
     
     // Schedule a timer which every 6 seconds calls launchFireworks function
     timer = Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(launchFireworks), userInfo: nil, repeats: true)
+
     
   }
   
@@ -63,6 +70,10 @@ class GameScene: SKScene {
         node.removeFromParent()
         fireWorks.remove(at: index)
       }
+    }
+    
+    if currentLaunches == maxNumOfLaunches {
+      timer.invalidate()
     }
   }
   
@@ -117,6 +128,9 @@ class GameScene: SKScene {
   
   /* Call several fireworks */
   func launchFireworks() {
+    
+    // Every time a set of fireworks are launched we count by adding 1 to currentLaunches property
+    currentLaunches += 1
     
     // Number for firework movement left to right or right to left
     let sideToSideNumber: CGFloat = 1500
