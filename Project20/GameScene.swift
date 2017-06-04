@@ -126,12 +126,12 @@ class GameScene: SKScene {
     
     switch randomFireworkModeNumber {
     case 0:
-      // Fireworks straight up
-      createFirework(xMovement: 512 - 200, x: 512 - 200, y: bottomEdge)
-      createFirework(xMovement: 512 - 100, x: 512 - 100, y: bottomEdge)
-      createFirework(xMovement: 512, x: 512, y: bottomEdge)
-      createFirework(xMovement: 512 + 100, x: 512 + 100, y: bottomEdge)
-      createFirework(xMovement: 512 + 200, x: 512 + 200, y: bottomEdge)
+      // Fireworks from left and right
+      createFirework(xMovement: 800, x: leftEdge, y: 0)
+      createFirework(xMovement: 800, x: leftEdge, y: 100)
+      createFirework(xMovement: 800, x: leftEdge, y: 200)
+      createFirework(xMovement: -800, x: rightEdge, y: 300)
+      createFirework(xMovement: -800, x: rightEdge, y: 400)
       
     case 1:
       // Fireworks up in a fan
